@@ -3,14 +3,7 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { Menu, Zap, Globe, MapPin, Search, User, ChevronDown } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
+import { Menu, Zap, Globe, MapPin, Search, User } from 'lucide-react';
 
 const primaryNavLinks = [
   { name: 'My Account', href: '/dashboard' },
@@ -20,9 +13,6 @@ const primaryNavLinks = [
   { name: 'Outages', href: '/outage-center' },
   { name: 'Customer Service', href: '/help-support' },
 ];
-
-const navLinksWithDropdown = ['My Account', 'Billing & Payments', 'Savings and Solutions', 'Start, Stop & Move'];
-
 
 export default function Header() {
   return (
@@ -91,25 +81,9 @@ export default function Header() {
       <div className="hidden md:flex h-12 bg-primary-darker text-primary-foreground">
          <nav className="container flex h-full max-w-screen-2xl items-center justify-start gap-8 text-sm font-medium">
             {primaryNavLinks.map((link) => (
-                navLinksWithDropdown.includes(link.name) ? (
-                    <DropdownMenu key={link.name}>
-                        <DropdownMenuTrigger asChild>
-                           <Link href={link.href} className="flex items-center gap-1 text-primary-foreground/80 transition-colors hover:text-primary-foreground">
-                                {link.name}
-                                <ChevronDown className="h-4 w-4" />
-                           </Link>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                            <DropdownMenuItem><Link href={link.href}>Main Page</Link></DropdownMenuItem>
-                            <DropdownMenuItem>Sub Item 1</DropdownMenuItem>
-                            <DropdownMenuItem>Sub Item 2</DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                ) : (
-                    <Link key={link.name} href={link.href} className="text-primary-foreground/80 transition-colors hover:text-primary-foreground">
-                        {link.name}
-                    </Link>
-                )
+                <Link key={link.name} href={link.href} className="text-primary-foreground/80 transition-colors hover:text-primary-foreground">
+                    {link.name}
+                </Link>
             ))}
         </nav>
       </div>

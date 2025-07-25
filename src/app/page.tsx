@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, CreditCard, DollarSign, HeartHandshake, Lightbulb, MessageSquare, Power, PowerOff, Sparkles, Users } from 'lucide-react';
+import { ArrowRight, CreditCard, HeartHandshake, MessageSquare, Power, Users, AlertTriangle, Sun, Car } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -38,6 +38,38 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4">
+           <Card className="grid md:grid-cols-2 items-center overflow-hidden [clip-path:polygon(1.5rem_0,100%_0,100%_100%,0_100%,0_1.5rem)]">
+              <div className="p-8 md:p-12">
+                <div className="flex items-center gap-3 mb-4">
+                  <AlertTriangle className="h-10 w-10 text-destructive" />
+                  <div>
+                    <h2 className="text-3xl font-headline">Report an Outage</h2>
+                    <p className="text-muted-foreground">Experiencing an issue? Let us know.</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-6">
+                  If your power is out, we're here to help. Report your outage and get updates on restoration times.
+                </p>
+                <Button asChild className="[clip-path:polygon(0.75rem_0,100%_0,100%_100%,0_100%,0_0.75rem)]">
+                    <Link href="/outage-center">Report or View Outage</Link>
+                </Button>
+              </div>
+              <div className="h-64 md:h-full">
+                 <Image
+                    src="https://placehold.co/600x400.png"
+                    alt="Outage Map"
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover"
+                    data-ai-hint="city map"
+                  />
+              </div>
+          </Card>
+        </div>
+      </section>
+
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
           <Card className="grid md:grid-cols-2 items-center overflow-hidden [clip-path:polygon(1.5rem_0,100%_0,100%_100%,0_100%,0_1.5rem)]">
@@ -65,36 +97,29 @@ export default function Home() {
       
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <InfoCard
-              imageSrc="https://placehold.co/600x400.png"
-              imageHint="happy family home"
-              category="ENERGY EFFICIENCY"
-              title="Get rebates, referrals + discounts for your home."
-              buttonText="See What's in Store"
-              href="#"
-            />
-            <InfoCard
-              imageSrc="https://placehold.co/600x400.png"
-              imageHint="smart thermostat"
-              category="SHIFT ENERGY USE + GET REWARDS"
-              title="Shift energy use and get bill credit rewards."
-              buttonText="Make a Difference"
-              href="#"
-            />
-            <InfoCard
-              imageSrc="https://placehold.co/600x400.png"
-              imageHint="electric car charging"
-              category="EVS AND RENEWABLE ENERGY"
-              title="See EV charging solutions + easy ways to go green."
-              buttonText="Explore Clean Energy"
-              href="#"
-            />
+           <div className="text-center mb-12">
+            <h2 className="text-3xl font-headline mb-2">Clean Energy Solutions</h2>
+            <p className="max-w-3xl mx-auto text-muted-foreground">
+              Explore ways to reduce your carbon footprint and embrace a sustainable future with our clean energy options.
+            </p>
           </div>
-          <div className="text-center mt-12">
-            <Link href="#" className="font-semibold text-primary hover:underline">
-              Find More Ways to Save
-            </Link>
+          <div className="grid md:grid-cols-2 gap-8">
+            <InfoCard
+              icon={<Sun className="h-10 w-10 text-primary" />}
+              category="RENEWABLE ENERGY"
+              title="Interested in Solar Power?"
+              description="Learn about our solar programs and find out if going solar is right for your home."
+              buttonText="Explore Solar Options"
+              href="#"
+            />
+            <InfoCard
+              icon={<Car className="h-10 w-10 text-primary" />}
+              category="ELECTRIC VEHICLES"
+              title="Driving an EV?"
+              description="Get information on EV charging rates, find charging stations, and discover rebates."
+              buttonText="EV Owner Resources"
+              href="#"
+            />
           </div>
         </div>
       </section>
@@ -155,24 +180,22 @@ function HelpCard({ icon, title, href }: { icon: React.ReactNode, title: string,
   );
 }
 
-function InfoCard({ imageSrc, imageHint, category, title, buttonText, href }: { imageSrc: string, imageHint: string, category: string, title: string, buttonText: string, href: string }) {
+function InfoCard({ icon, category, title, description, buttonText, href }: { icon: React.ReactNode, category: string, title: string, description: string, buttonText: string, href: string }) {
   return (
-    <Card className="flex flex-col [clip-path:polygon(1.5rem_0,100%_0,100%_100%,0_100%,0_1.5rem)]">
-      <Image
-          src={imageSrc}
-          alt={title}
-          width={600}
-          height={400}
-          className="w-full h-48 object-cover rounded-t-lg"
-          data-ai-hint={imageHint}
-        />
-      <CardContent className="flex flex-col flex-grow p-6">
-        <p className="text-xs font-bold text-muted-foreground mb-2">{category}</p>
-        <h3 className="text-xl font-headline mb-4 flex-grow">{title}</h3>
-        <Button variant="outline" className="w-full mt-auto [clip-path:polygon(0.75rem_0,100%_0,100%_100%,0_100%,0_0.75rem)]" asChild>
-          <Link href={href}>{buttonText}</Link>
-        </Button>
-      </CardContent>
+    <Card className="flex flex-col p-8 [clip-path:polygon(1.5rem_0,100%_0,100%_100%,0_100%,0_1.5rem)]">
+      <div className="flex-grow">
+        <div className="flex items-start gap-4">
+          {icon}
+          <div>
+            <p className="text-xs font-bold text-muted-foreground mb-1">{category}</p>
+            <h3 className="text-xl font-headline mb-2">{title}</h3>
+            <p className="text-sm text-muted-foreground mb-4">{description}</p>
+          </div>
+        </div>
+      </div>
+      <Button variant="outline" className="w-full mt-auto [clip-path:polygon(0.75rem_0,100%_0,100%_100%,0_100%,0_0.75rem)]" asChild>
+        <Link href={href}>{buttonText}</Link>
+      </Button>
     </Card>
   );
 }
