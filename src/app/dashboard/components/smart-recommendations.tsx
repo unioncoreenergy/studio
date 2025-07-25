@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { getSmartRecommendations, SmartRecommendationsInput } from '@/ai/flows/smart-recommendations';
+// import { getSmartRecommendations, SmartRecommendationsInput } from '@/ai/flows/smart-recommendations';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -45,12 +45,25 @@ export default function SmartRecommendations() {
     setIsLoading(true);
     setRecommendations(null);
     try {
-      const input: SmartRecommendationsInput = {
-        location: values.location,
-        energyUsageData: JSON.stringify(dummyEnergyData),
-      };
-      const result = await getSmartRecommendations(input);
-      setRecommendations(result.recommendations);
+      // Mock recommendations for static deployment
+      const mockRecommendations = [
+        {
+          title: "Energy Efficiency Tip",
+          description: "Consider upgrading to LED bulbs to reduce energy consumption by up to 75%."
+        },
+        {
+          title: "Smart Thermostat",
+          description: "Installing a programmable thermostat can save 10-23% on heating and cooling costs."
+        },
+        {
+          title: "Solar Options",
+          description: "Based on your location, solar panels could reduce your energy bill significantly."
+        }
+      ];
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setRecommendations(mockRecommendations);
     } catch (error) {
       console.error("Failed to get recommendations:", error);
       toast({
