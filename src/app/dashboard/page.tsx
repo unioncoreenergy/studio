@@ -48,7 +48,7 @@ export default function DashboardPage() {
         <QuickLinkCard 
             icon={<Power className="h-8 w-8 text-accent" />}
             title="Start/Stop/Move"
-            href="#"
+            href="/start-stop-move"
         />
 
         <QuickLinkCard 
