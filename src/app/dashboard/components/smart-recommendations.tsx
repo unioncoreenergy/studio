@@ -30,7 +30,7 @@ const dummyEnergyData = {
 };
 
 export default function SmartRecommendations() {
-  const [recommendations, setRecommendations] = useState<string | null>(null);
+  const [recommendations, setRecommendations] = useState<Array<{title: string; description: string}> | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
@@ -118,7 +118,14 @@ export default function SmartRecommendations() {
         {recommendations && (
           <div className="mt-6 rounded-lg border bg-muted/50 p-4">
             <h3 className="font-bold mb-2">Here are your personalized tips:</h3>
-            <p className="whitespace-pre-wrap text-sm">{recommendations}</p>
+            <div className="space-y-3">
+              {recommendations.map((rec, index) => (
+                <div key={index} className="border-l-4 border-accent pl-3">
+                  <h4 className="font-semibold text-sm">{rec.title}</h4>
+                  <p className="text-sm text-muted-foreground">{rec.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </CardContent>
