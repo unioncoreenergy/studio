@@ -15,52 +15,7 @@ export default function BillingPage() {
                 </div>
             </section>
 
-            {/* Current Bill Overview */}
-            <section className="py-16">
-                <div className="container mx-auto px-6">
-                    <Card className="max-w-2xl mx-auto mb-12 shadow-lg">
-                        <CardHeader>
-                            <CardTitle className="text-2xl">Your Current Bill</CardTitle>
-                            <CardDescription>Statement for July 2025</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-4">
-                                    <div className="flex justify-between">
-                                        <span className="text-muted-foreground">Previous Balance:</span>
-                                        <span>$0.00</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-muted-foreground">Current Charges:</span>
-                                        <span>$145.50</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-muted-foreground">Payments Received:</span>
-                                        <span className="text-green-600">-$145.50</span>
-                                    </div>
-                                    <hr />
-                                    <div className="flex justify-between font-bold text-lg">
-                                        <span>Amount Due:</span>
-                                        <span className="text-primary">$0.00</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col justify-between">
-                                    <div>
-                                        <p className="text-sm text-muted-foreground">Due Date</p>
-                                        <p className="font-bold text-green-600 text-lg">✓ Paid</p>
-                                    </div>
-                                    <Button className="w-full mt-4 bg-green-600 hover:bg-green-700" disabled>
-                                        <CheckCircle className="mr-2 h-4 w-4" />
-                                        Account Current
-                                    </Button>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-            </section>
-
-            {/* Payment Options Grid */}
+                        {/* Payment Options Grid */}
             <section className="py-16 bg-background">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-12">
