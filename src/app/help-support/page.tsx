@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Phone, Mail, MessageSquare } from "lucide-react";
 
 const faqItems = [
   {
@@ -82,6 +83,19 @@ export default function HelpSupportPage() {
               </form>
             </CardContent>
           </Card>
+          <div className="mt-8 space-y-4 text-center">
+            <h3 className="font-semibold text-lg">Other ways to reach us</h3>
+            <div className="flex justify-center gap-8">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Phone className="h-5 w-5"/>
+                <span>1-800-555-0199</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Mail className="h-5 w-5"/>
+                <span>support@unioncore.energy</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

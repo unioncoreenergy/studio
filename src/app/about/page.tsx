@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
 import { Zap, Heart, History } from "lucide-react";
 
 export default function AboutUsPage() {

@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, CreditCard, HeartHandshake, MessageSquare, Power, Users, AlertTriangle, Sun, Car } from 'lucide-react';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-dvh bg-card">
-      <section className="relative w-full h-[50vh] md:h-[40vh] flex items-center justify-center text-center bg-cover bg-center" style={{backgroundImage: "url('https://placehold.co/1920x1080.png')"}}>
+      <section className="relative w-full h-[50vh] md:h-[40vh] flex items-center justify-center text-center bg-cover bg-center" style={{backgroundImage: "url('https://placehold.co/1920x1080.png')"}} data-ai-hint="suburban street sunset">
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 container mx-auto px-4 text-white">
           <h1 className="text-4xl md:text-5xl font-headline mb-8">
@@ -73,6 +73,16 @@ export default function Home() {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
           <Card className="grid md:grid-cols-2 items-center overflow-hidden [clip-path:polygon(1.5rem_0,100%_0,100%_100%,0_100%,0_1.5rem)]">
+               <div className="h-64 md:h-full order-last md:order-first">
+                 <Image
+                    src="https://placehold.co/600x400.png"
+                    alt="Abstract savings graphic"
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover"
+                    data-ai-hint="family home savings"
+                  />
+              </div>
               <div className="p-8 md:p-12">
                 <p className="text-sm font-semibold text-accent uppercase mb-2">FEATURED</p>
                 <h2 className="text-3xl font-headline mb-4">Discover summer savings.</h2>
@@ -80,16 +90,6 @@ export default function Home() {
                   Take charge of your home's energy use this summer. Discover ways you can save with our helpful tips and solutions.
                 </p>
                 <Button className="[clip-path:polygon(0.75rem_0,100%_0,100%_100%,0_100%,0_0.75rem)]">Save Now</Button>
-              </div>
-              <div className="h-64 md:h-full">
-                 <Image
-                    src="https://placehold.co/600x400.png"
-                    alt="Abstract savings graphic"
-                    width={600}
-                    height={400}
-                    className="w-full h-full object-cover"
-                    data-ai-hint="savings energy"
-                  />
               </div>
           </Card>
         </div>
@@ -135,9 +135,9 @@ export default function Home() {
               <CompanyLinkCard 
                 imageSrc="https://placehold.co/600x400.png"
                 imageHint="community charity"
-                title="Duke Energy Foundation"
-                description="The Duke Energy Foundation's annual giving totals more than $30 million."
-                href="#"
+                title="UnionCore Foundation"
+                description="The UnionCore Foundation's annual giving totals more than $30 million."
+                href="/about"
               />
               <CompanyLinkCard 
                 imageSrc="https://placehold.co/600x400.png"
@@ -170,7 +170,7 @@ export default function Home() {
 function HelpCard({ icon, title, href }: { icon: React.ReactNode, title: string, href: string }) {
   return (
     <Link href={href} className="block group">
-      <Card className="h-full bg-card/80 hover:bg-card/100 transition-colors p-4 text-center text-primary [clip-path:polygon(1.5rem_0,100%_0,100%_100%,0_100%,0_1.5rem)]">
+      <Card className="h-full bg-card/80 hover:bg-card/100 transition-colors p-4 text-center text-primary-foreground [clip-path:polygon(1.5rem_0,100%_0,100%_100%,0_100%,0_1.5rem)]">
         <div className="flex justify-center items-center h-16 w-16 rounded-full bg-primary/10 text-primary mx-auto mb-2">
           {icon}
         </div>
